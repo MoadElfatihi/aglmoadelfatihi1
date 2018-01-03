@@ -16,15 +16,17 @@ pipeline {
                 }
             }
         }
-        stage ('Test') {
-            steps {
-                bat 'mvn site'
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+        
+         stage('Sonarqube analysis') {
+    steps {
+    script {
+             scannerHome = tool 'SonarScanner';
+        }
+     withSonarQubeEnv('SonarQube') {
+       bat "${scannerHome}\\bin\\sonar-scanner.bat" 
+    }
+
+    } 
         }
     }
 }
