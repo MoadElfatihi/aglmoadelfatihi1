@@ -34,7 +34,8 @@
   
   </reporting>
   <build>
-    <plugin>
+    <plugins>
+          <plugin>
       <groupId>com.mycompany.app</groupId>
       <artifactId>docker-maven-plugin</artifactId>
       <version>1.0-SNAPSHOT</version>
@@ -52,5 +53,6 @@
         </resources>
       </configuration>
     </plugin>
+    </plugins>
   </build>
 </project>
